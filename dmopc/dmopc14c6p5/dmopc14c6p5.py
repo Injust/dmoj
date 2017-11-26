@@ -1,0 +1,1 @@
+print((lambda n: pow(2, n * (n + 1) / 2, 998244353))(int(__import__("sys").stdin.read())))
