@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.BitSet;
 
-public class Main {
+public class phantom3 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		long n = Long.parseLong(in.readLine());
