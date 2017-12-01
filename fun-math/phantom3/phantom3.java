@@ -11,7 +11,7 @@ public class phantom3 {
 		in.close();
 		BitSet sieve = new BitSet(20000000);
 		int size = (int) Math.ceil(Math.sqrt(m));
-		ArrayList<Integer> primes = new ArrayList<Integer>();
+		ArrayList<Integer> primes = new ArrayList<>();
 		for (int i = 2; i < size; i++) {
 			if (!sieve.get(i)) {
 				primes.add(i);
