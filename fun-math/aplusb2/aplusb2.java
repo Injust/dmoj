@@ -109,5 +109,6 @@ public class aplusb2 {
 				System.out.println(outS);
 			}
 		}
+		in.close();
 	}
 }

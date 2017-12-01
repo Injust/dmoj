@@ -19,6 +19,7 @@ public class dmpg15s5 {
 			grid[x][y + h] ^= true;
 			grid[x + w][y + h] ^= true;
 		}
+		in.close();
 		for (int x = 0; x <= n; x++) {
 			for (int y = 1; y <= n; y++) {
 				grid[x][y] ^= grid[x][y - 1];

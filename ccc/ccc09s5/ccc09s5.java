@@ -22,6 +22,7 @@ public class ccc09s5 {
 				grid[yy][Math.min(gx, x + d + 1)] -= b;
 			}
 		}
+		in.close();
 		int high = 0;
 		int out = 0;
 		for (y = 0; y < gy; y++) {
