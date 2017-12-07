@@ -19,7 +19,6 @@ trees = sorted(enumerate(map(int, input().split()), start=1), key=lambda _: _[1]
 out = [0] * int(input())
 for pos, line in sorted(enumerate(map(int, input().split()) for _ in xrange(len(out))), key=lambda _: -_[1][2]):
 	while trees and trees[-1][1] >= line[2]:
-		ind, m = trees.pop()
-		update(ind, m)
+		update(*trees.pop())
 	out[pos] = str(query(line[1] + 1) - query(line[0]))
 print("\n".join(out))
