@@ -19,7 +19,7 @@ for yy in xrange(y):
 				distance = d
 				tree = (xx, yy)
 queue = __import__("collections").deque([(start[0], start[1], 0, 0)])
-visited = set([start])
+visited = {start}
 cost = {start: (0, 0)}
 while queue:
 	xx, yy, s, t = queue.popleft()
