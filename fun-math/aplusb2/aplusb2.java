@@ -6,18 +6,15 @@ public class aplusb2 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		int a = Integer.parseInt(in.readLine());
-		String s, l;
 		for (int i = 0; i < a; i++) {
 			String[] tokens = in.readLine().split(" ");
 			StringBuilder out = new StringBuilder();
 			StringBuilder out2 = new StringBuilder();
-			String temp;
+			boolean lneg, sneg;
 			int carry = 0;
 			int carry2 = 0;
-			int sum, sum2;
-			s = tokens[0];
-			l = tokens[1];
-			boolean sneg, lneg;
+			String s = tokens[0];
+			String l = tokens[1];
 			if (sneg = s.charAt(0) == '-') {
 				s = s.substring(1);
 			}
@@ -32,12 +29,12 @@ public class aplusb2 {
 			l = new String(rep) + l;
 			if (sneg ^ lneg) {
 				if (sneg) {
-					temp = l;
+					String temp = l;
 					l = s;
 					s = temp;
 				}
-				sum = carry + s.charAt(s.length() - 1) - l.charAt(s.length() - 1) + '0';
-				sum2 = carry2 + s.charAt(s.length() - 1) - l.charAt(s.length() - 1) + '0';
+				int sum = carry + s.charAt(s.length() - 1) - l.charAt(s.length() - 1) + '0';
+				int sum2 = carry2 + s.charAt(s.length() - 1) - l.charAt(s.length() - 1) + '0';
 				carry = 0;
 				if (sum < '0') {
 					sum += 10;
@@ -70,7 +67,7 @@ public class aplusb2 {
 				}
 			} else {
 				for (int j = s.length() - 1; j >= 0; j--) {
-					sum = carry + s.charAt(j) + l.charAt(j) - '0';
+					int sum = carry + s.charAt(j) + l.charAt(j) - '0';
 					carry = 0;
 					if (sum > 57) {
 						sum -= 10;

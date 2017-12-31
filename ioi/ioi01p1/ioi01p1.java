@@ -40,20 +40,20 @@ public class ioi01p1 {
 		String[] tokens = in.readLine().split(" ");
 		int s = Integer.parseInt(tokens[1]);
 		BIT2D bit = new BIT2D(s, s);
-		int i, x, y, a, l, b, r, t;
+		int i;
 		do {
 			tokens = in.readLine().split(" ");
 			i = Integer.parseInt(tokens[0]);
 			if (i == 1) {
-				x = Integer.parseInt(tokens[1]);
-				y = Integer.parseInt(tokens[2]);
-				a = Integer.parseInt(tokens[3]);
+				int x = Integer.parseInt(tokens[1]);
+				int y = Integer.parseInt(tokens[2]);
+				int a = Integer.parseInt(tokens[3]);
 				bit.update(x + 1, y + 1, a);
 			} else if (i == 2) {
-				l = Integer.parseInt(tokens[1]);
-				b = Integer.parseInt(tokens[2]);
-				r = Integer.parseInt(tokens[3]);
-				t = Integer.parseInt(tokens[4]);
+				int l = Integer.parseInt(tokens[1]);
+				int b = Integer.parseInt(tokens[2]);
+				int r = Integer.parseInt(tokens[3]);
+				int t = Integer.parseInt(tokens[4]);
 				System.out.println(bit.query2D(l + 1, b + 1, r + 1, t + 1));
 			}
 		} while (i < 3);

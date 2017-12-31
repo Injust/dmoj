@@ -21,10 +21,9 @@ public class phantom3 {
 			}
 		}
 		sieve.clear();
-		int min;
 		int out = 0;
 		for (int prime : primes) {
-			min = (int) (n / prime * prime - n);
+			int min = (int) (n / prime * prime - n);
 			if (min < 0) {
 				min += prime;
 			}

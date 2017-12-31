@@ -43,26 +43,24 @@ public class gfssoc1s4 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		int n = Integer.parseInt(in.readLine());
-		BIT3D bit = new BIT3D(n, n, n);
 		int q = Integer.parseInt(in.readLine());
-		int x, y, z, l, x1, y1, z1, x2, y2, z2;
+		BIT3D bit = new BIT3D(n, n, n);
 		long out = 0;
-		String[] tokens;
 		for (int i = 0; i < q; i++) {
-			tokens = in.readLine().split(" ");
+			String[] tokens = in.readLine().split(" ");
 			if (tokens[0].equals("C")) {
-				x = Integer.parseInt(tokens[1]);
-				y = Integer.parseInt(tokens[2]);
-				z = Integer.parseInt(tokens[3]);
-				l = Integer.parseInt(tokens[4]);
+				int x = Integer.parseInt(tokens[1]);
+				int y = Integer.parseInt(tokens[2]);
+				int z = Integer.parseInt(tokens[3]);
+				int l = Integer.parseInt(tokens[4]);
 				bit.update(x, y, z, l - (int) bit.query3D(x, y, z, x, y, z));
 			} else if (tokens[0].equals("S")) {
-				x1 = Integer.parseInt(tokens[1]);
-				y1 = Integer.parseInt(tokens[2]);
-				z1 = Integer.parseInt(tokens[3]);
-				x2 = Integer.parseInt(tokens[4]);
-				y2 = Integer.parseInt(tokens[5]);
-				z2 = Integer.parseInt(tokens[6]);
+				int x1 = Integer.parseInt(tokens[1]);
+				int y1 = Integer.parseInt(tokens[2]);
+				int z1 = Integer.parseInt(tokens[3]);
+				int x2 = Integer.parseInt(tokens[4]);
+				int y2 = Integer.parseInt(tokens[5]);
+				int z2 = Integer.parseInt(tokens[6]);
 				out += bit.query3D(x1, y1, z1, x2, y2, z2);
 			}
 		}

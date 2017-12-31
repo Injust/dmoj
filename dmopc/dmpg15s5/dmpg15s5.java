@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.BitSet;
 
 public class dmpg15s5 {
 	public static void main(String[] args) throws Exception {
@@ -7,36 +8,33 @@ public class dmpg15s5 {
 		String[] tokens = in.readLine().split(" ");
 		int n = Integer.parseInt(tokens[0]);
 		int m = Integer.parseInt(tokens[1]);
-		boolean[][] grid = new boolean[n + 1][n + 1];
+		BitSet[] grid = new BitSet[n + 1];
+		for (int i = 0; i <= n; i++) {
+			grid[i] = new BitSet(n + 1);
+		}
 		for (int i = 0; i < m; i++) {
 			tokens = in.readLine().split(" ");
 			int x = Integer.parseInt(tokens[0]);
 			int y = Integer.parseInt(tokens[1]);
 			int w = Integer.parseInt(tokens[2]);
 			int h = Integer.parseInt(tokens[3]);
-			grid[x][y] ^= true;
-			grid[x + w][y] ^= true;
-			grid[x][y + h] ^= true;
-			grid[x + w][y + h] ^= true;
+			grid[y].flip(x);
+			grid[y].flip(x + w);
+			grid[y + h].flip(x);
+			grid[y + h].flip(x + w);
 		}
 		in.close();
-		for (int x = 0; x <= n; x++) {
-			for (int y = 1; y <= n; y++) {
-				grid[x][y] ^= grid[x][y - 1];
+		for (BitSet y : grid) {
+			for (int x = 1; x <= n; x++) {
+				y.set(x, y.get(x) ^ y.get(x - 1));
 			}
 		}
-		for (int x = 1; x <= n; x++) {
-			for (int y = 0; y <= n; y++) {
-				grid[x][y] ^= grid[x - 1][y];
-			}
+		for (int y = 1; y <= n; y++) {
+			grid[y].xor(grid[y - 1]);
 		}
 		int out = 0;
-		for (int x = 0; x <= n; x++) {
-			for (int y = 0; y <= n; y++) {
-				if (grid[x][y]) {
-					out++;
-				}
-			}
+		for (BitSet y : grid) {
+			out += y.cardinality();
 		}
 		System.out.println(out);
 	}
