@@ -12,6 +12,16 @@ class BIT3D {
 		this.gz = gz;
 	}
 
+	void add(int x, int y, int z, int delta) {
+		for (; z <= gz; z += -z & z) {
+			for (int y1 = y; y1 <= gy; y1 += -y1 & y1) {
+				for (int x1 = x; x1 <= gx; x1 += -x1 & x1) {
+					data[z][y1][x1] += delta;
+				}
+			}
+		}
+	}
+
 	private long query(int x, int y, int z) {
 		long ret = 0;
 		for (; z > 0; z -= -z & z) {
@@ -24,18 +34,8 @@ class BIT3D {
 		return ret;
 	}
 
-	long query3D(int x1, int y1, int z1, int x2, int y2, int z2) {
+	long sum(int x1, int y1, int z1, int x2, int y2, int z2) {
 		return query(x2, y2, z2) - query(x2, y2, z1 - 1) - query(x1 - 1, y2, z2) + query(x1 - 1, y2, z1 - 1) - query(x2, y1 - 1, z2) + query(x2, y1 - 1, z1 - 1) + query(x1 - 1, y1 - 1, z2) - query(x1 - 1, y1 - 1, z1 - 1);
-	}
-
-	void update(int x, int y, int z, int delta) {
-		for (; z <= gz; z += -z & z) {
-			for (int y1 = y; y1 <= gy; y1 += -y1 & y1) {
-				for (int x1 = x; x1 <= gx; x1 += -x1 & x1) {
-					data[z][y1][x1] += delta;
-				}
-			}
-		}
 	}
 }
 
@@ -53,7 +53,7 @@ public class gfssoc1s4 {
 				int y = Integer.parseInt(tokens[2]);
 				int z = Integer.parseInt(tokens[3]);
 				int l = Integer.parseInt(tokens[4]);
-				bit.update(x, y, z, l - (int) bit.query3D(x, y, z, x, y, z));
+				bit.add(x, y, z, l - (int) bit.sum(x, y, z, x, y, z));
 			} else if (tokens[0].equals("S")) {
 				int x1 = Integer.parseInt(tokens[1]);
 				int y1 = Integer.parseInt(tokens[2]);
@@ -61,7 +61,7 @@ public class gfssoc1s4 {
 				int x2 = Integer.parseInt(tokens[4]);
 				int y2 = Integer.parseInt(tokens[5]);
 				int z2 = Integer.parseInt(tokens[6]);
-				out += bit.query3D(x1, y1, z1, x2, y2, z2);
+				out += bit.sum(x1, y1, z1, x2, y2, z2);
 			}
 		}
 		System.out.println(out);

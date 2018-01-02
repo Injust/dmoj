@@ -11,6 +11,14 @@ class BIT2D {
 		this.gy = gy;
 	}
 
+	void add(int x, int y, int delta) {
+		for (; y <= gy; y += -y & y) {
+			for (int x1 = x; x1 <= gx; x1 += -x1 & x1) {
+				data[y][x1] += delta;
+			}
+		}
+	}
+
 	private int query(int x, int y) {
 		int ret = 0;
 		for (; y > 0; y -= -y & y) {
@@ -21,16 +29,8 @@ class BIT2D {
 		return ret;
 	}
 
-	int query2D(int x1, int y1, int x2, int y2) {
+	int sum(int x1, int y1, int x2, int y2) {
 		return query(x2, y2) + query(x1 - 1, y1 - 1) - query(x2, y1 - 1) - query(x1 - 1, y2);
-	}
-
-	void update(int x, int y, int delta) {
-		for (; y <= gy; y += -y & y) {
-			for (int x1 = x; x1 <= gx; x1 += -x1 & x1) {
-				data[y][x1] += delta;
-			}
-		}
 	}
 }
 
@@ -48,13 +48,13 @@ public class ioi01p1 {
 				int x = Integer.parseInt(tokens[1]);
 				int y = Integer.parseInt(tokens[2]);
 				int a = Integer.parseInt(tokens[3]);
-				bit.update(x + 1, y + 1, a);
+				bit.add(x + 1, y + 1, a);
 			} else if (i == 2) {
 				int l = Integer.parseInt(tokens[1]);
 				int b = Integer.parseInt(tokens[2]);
 				int r = Integer.parseInt(tokens[3]);
 				int t = Integer.parseInt(tokens[4]);
-				System.out.println(bit.query2D(l + 1, b + 1, r + 1, t + 1));
+				System.out.println(bit.sum(l + 1, b + 1, r + 1, t + 1));
 			}
 		} while (i < 3);
 	}

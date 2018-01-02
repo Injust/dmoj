@@ -3,6 +3,11 @@ class BIT:
 		self.data = [0] * (length + 1)
 		self.length = length
 
+	def add(self, ind, delta):
+		while ind <= self.length:
+			self.data[ind] += delta
+			ind += -ind & ind
+
 	def query(self, ind):
 		ret = 0
 		while ind:
@@ -10,10 +15,8 @@ class BIT:
 			ind -= -ind & ind
 		return ret
 
-	def update(self, ind, delta):
-		while ind <= self.length:
-			self.data[ind] += delta
-			ind += -ind & ind
+	def sum(self, low, high):
+		return self.query(high) - self.query(low - 1)
 
 
 input = __import__("sys").stdin.readline
@@ -23,6 +26,6 @@ trees = sorted(enumerate(map(int, input().split()), start=1), key=lambda _: _[1]
 out = [0] * int(input())
 for pos, line in sorted(enumerate(map(int, input().split()) for _ in xrange(len(out))), key=lambda _: -_[1][2]):
 	while trees and trees[-1][1] >= line[2]:
-		bit.update(*trees.pop())
-	out[pos] = str(bit.query(line[1] + 1) - bit.query(line[0]))
+		bit.add(*trees.pop())
+	out[pos] = str(bit.sum(line[0] + 1, line[1] + 1))
 print("\n".join(out))
