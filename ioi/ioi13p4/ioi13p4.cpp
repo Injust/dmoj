@@ -12,7 +12,7 @@ void exploreCave(int N) {
 			for (int j = left; j <= mid; j++) {
 				s[j] ^= !l[j];
 			}
-			int result = tryCombination(s);
+			result = tryCombination(s);
 			for (int j = left; j <= mid; j++) {
 				s[j] ^= !l[j];
 			}
