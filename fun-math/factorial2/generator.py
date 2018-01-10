@@ -5,7 +5,7 @@ def factorial(start, value, target):
 
 
 cycle = 1
-interval = 105536
+interval = int(__import__("sys").argv[1])
 temp = 1
 value = 1
 for i in range(interval, 4294967291 + interval * 7, interval):
@@ -14,6 +14,6 @@ for i in range(interval, 4294967291 + interval * 7, interval):
 	cycle += 1
 	if cycle == 5:
 		for shift in range(0, 160, 20):
-			print(chr(0x10000 + (temp >> shift & 0x100000 - 1)), end="")
+			__import__("sys").stdout.write(unichr(0x10000 + (temp >> shift & 0x100000 - 1)).encode("utf-8"))
 		cycle = 0
 		temp = 0
