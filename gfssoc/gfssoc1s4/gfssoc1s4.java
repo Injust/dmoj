@@ -64,6 +64,7 @@ public class gfssoc1s4 {
 				out += bit.sum(x1, y1, z1, x2, y2, z2);
 			}
 		}
+		in.close();
 		System.out.println(out);
 	}
 }

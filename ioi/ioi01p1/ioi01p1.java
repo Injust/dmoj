@@ -57,5 +57,6 @@ public class ioi01p1 {
 				System.out.println(bit.sum(l + 1, b + 1, r + 1, t + 1));
 			}
 		} while (i < 3);
+		in.close();
 	}
 }
