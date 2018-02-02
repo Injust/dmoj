@@ -1,6 +1,6 @@
 #include <iostream>
 
-char grid[2001][2001];
+char grid[2000][2001];
 int gx, gy;
 
 void dfs(int x, int y) {
