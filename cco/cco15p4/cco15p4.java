@@ -44,6 +44,7 @@ public class cco15p4 {
 		for (int y = 0; y < gy; y++) {
 			grid[y] = in.readLine().toCharArray();
 		}
+		in.close();
 		for (int y = 0; y < gy; y++) {
 			for (int x = 0; x < gx; x++) {
 				if (grid[y][x] != '.') {

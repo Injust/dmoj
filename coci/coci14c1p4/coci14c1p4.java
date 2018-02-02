@@ -31,6 +31,7 @@ public class coci14c1p4 {
 			accuse[accuser] = accused;
 			accusations[accused]++;
 		}
+		in.close();
 		visited = new BitSet(n);
 		for (int accuser = 0; accuser < n; accuser++) {
 			if (accusations[accuser] == 0) {
