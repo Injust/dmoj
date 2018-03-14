@@ -9,7 +9,7 @@ def dfs(start, paths, visited):
 input = __import__("sys").stdin.readline
 dp = {}
 n, m = map(int, input().split())
-roads = [[] for _ in xrange(n)]
+roads = __import__("collections").defaultdict(list)
 for _ in xrange(m):
 	a, b = map(int, input().split())
 	roads[a - 1].append(b - 1)

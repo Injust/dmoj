@@ -1,7 +1,5 @@
 def r(n):
-	if n not in f:
-		d = n >> 1
-		f[n] = (r(d) * r(d + (n & 1)) + r(d - (n & 1 ^ 1)) * r(d - 1)) % 1000000007
+	f[n] = f[n] if n in f else (r(n >> 1) * r((n >> 1) + (n & 1)) + r((n >> 1) - (n & 1 ^ 1)) * r((n >> 1) - 1)) % 1000000007
 	return f[n]
 
 
