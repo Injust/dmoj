@@ -17,7 +17,7 @@ for yy in xrange(y):
 			d = (start[0] - xx) ** 2 + (start[1] - yy) ** 2
 			if d < distance:
 				distance = d
-				tree = (xx, yy)
+				tree = xx, yy
 queue = __import__("collections").deque([(start[0], start[1], 0, 0)])
 visited = {start}
 cost = {start: (0, 0)}

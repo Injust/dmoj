@@ -10,17 +10,18 @@ for y in xrange(gy):
 ul = set()
 for cx, cy in corners:
 	size = 101
-	for dx, dy in ((1, 1), (-1, 1), (1, -1), (-1, -1)):
-		cx1, cy1 = cx, cy
-		cx2, cy2 = cx, cy
-		length = 0
-		while 0 <= cx1 + dx < gx and 0 <= cy1 < gy and 0 <= cx2 < gx and 0 <= cy2 + dy < gy and grid[cy1][cx1 + dx] == grid[cy2 + dy][cx2] == "x":
-			cx1 += dx
-			cy2 += dy
-			length += 1
-		if length:
-			size = min(size, length)
-			ul.add((cx if ~dx else cx1, cy if ~dy else cy2, length))
+	for dx in 1, -1:
+		for dy in 1, -1:
+			cx1, cy1 = cx, cy
+			cx2, cy2 = cx, cy
+			length = 0
+			while 0 <= cx1 + dx < gx and 0 <= cy1 < gy and 0 <= cx2 < gx and 0 <= cy2 + dy < gy and grid[cy1][cx1 + dx] == grid[cy2 + dy][cx2] == "x":
+				cx1 += dx
+				cy2 += dy
+				length += 1
+			if length:
+				size = min(size, length)
+				ul.add((cx if ~dx else cx1, cy if ~dy else cy2, length))
 	if size == 101:
 		ul.add((cx, cy, 0))
 for out in ul:

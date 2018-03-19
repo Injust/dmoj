@@ -13,7 +13,7 @@ while queue:
     time, steps, at = heappop(queue)
     for dest, add in paths[at]:
         if (time + add, steps + 1) < cost[dest]:
-            cost[dest] = (time + add, steps + 1)
+            cost[dest] = time + add, steps + 1
             heappush(queue, (time + add, steps + 1, dest))
 print(cost[-1][1])
 print(int(round(cost[-1][0] / 3)))

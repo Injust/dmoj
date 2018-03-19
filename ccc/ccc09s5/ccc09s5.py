@@ -1,5 +1,6 @@
 input = __import__("sys").stdin.readline
-gy, gx = int(input()), int(input())
+gy = int(input())
+gx = int(input())
 grid = [[0] * (gx + 1) for _ in xrange(gy)]
 for _ in xrange(int(input())):
 	x, y, r, b = map(int, input().split())
