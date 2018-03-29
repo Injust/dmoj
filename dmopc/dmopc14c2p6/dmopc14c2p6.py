@@ -1,10 +1,10 @@
 class BIT:
-	def __init__(self, length):
-		self.data = [0] * (length + 1)
-		self.length = length
+	def __init__(self, maxind):
+		self.data = [0] * (maxind + 1)
+		self.maxind = maxind
 
 	def add(self, ind, delta):
-		while ind <= self.length:
+		while ind <= self.maxind:
 			self.data[ind] += delta
 			ind += -ind & ind
 
