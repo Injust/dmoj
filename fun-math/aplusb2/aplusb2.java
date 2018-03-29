@@ -47,7 +47,7 @@ public class aplusb2 {
 				out.insert(0, (char) sum);
 				if (sum2 == '0') {
 					sum2 += 10;
-					carry2 -= 1;
+					carry2--;
 				}
 				out2.insert(0, (char) sum2);
 				for (int j = s.length() - 2; j >= 0; j--) {
