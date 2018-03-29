@@ -1,11 +1,11 @@
 class BIT:
-	def __init__(self, length):
-		self.data = [0] * (length + 1)
-		self.length = length
+	def __init__(self, maxind):
+		self.data = [0] * (maxind + 1)
+		self.maxind = maxind
 
-	def add(self, ind, delta):
-		while ind <= self.length:
-			self.data[ind] += delta
+	def add(self, ind):
+		while ind <= self.maxind:
+			self.data[ind] += 1
 			ind += -ind & ind
 
 	def query(self, ind):
@@ -15,25 +15,16 @@ class BIT:
 			ind -= -ind & ind
 		return ret
 
-	def sum(self, low, high):
-		return self.query(high) - self.query(low - 1)
-
 
 input = __import__("sys").stdin.readline
 n = int(input())
-psa = [0] + map(int, input().split())
+psa = [[0, 0]] + [[val, ind] for ind, val in enumerate(map(int, input().split()), start=1)]
 p = int(input())
-lookup = [(0, 0)]
 for i in xrange(1, n + 1):
-	psa[i] += psa[i - 1] - p
-	lookup.append((psa[i], i))
-lookup.sort()
+	psa[i][0] += psa[i - 1][0] - p
 bit = BIT(n + 1)
-left = 0
 out = 0
-for right in xrange(n + 1):
-	while left < right and lookup[right][0] >= lookup[left][0]:
-		bit.add(lookup[left][1] + 1, 1)
-		left += 1
-	out += bit.query(lookup[right][1] + 1)
+for pair in sorted(psa):
+	out += bit.query(pair[1] + 1)
+	bit.add(pair[1] + 1)
 print(out)
