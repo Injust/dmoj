@@ -1,1 +1,1 @@
-print 2,(lambda n,_:(lambda p:" ".join(`i`+"*"*bool(p&{i+2,i-2})for i in[p.__isub__(set(_(x*x,n,x+x)))for x in _(n/9)if{x}&p][0]))(set(_(3,n,2))))(input(),range)
+print(lambda p,_:" ".join(([p.__setitem__(j,0)for j in _(i*i,len(p),i)],`i`+"*"*(p[i-2]|p[i+2]))[1]for i in _(2,len(p))if p[i]))([0]+[1]*input(),range)
