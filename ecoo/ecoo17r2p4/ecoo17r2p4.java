@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class ecoo17r2p4 {
 	public static void main(String[] args) throws Exception {
@@ -7,9 +8,7 @@ public class ecoo17r2p4 {
 		int j = 0;
 		int[] o = new int[10001];
 		int[][] c = new int[2][10002];
-		for (int i = 0; i < 10002; i++) {
-			c[1][i] = 1;
-		}
+		Arrays.fill(c[1], 1);
 		for (int i = 0; i < 10; i++) {
 			int n = Integer.parseInt(in.readLine());
 			for (; j <= n; j++) {

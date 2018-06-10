@@ -7,9 +7,7 @@ int main() {
 	int n;
 	int o[10001];
 	int c[2][10002];
-	for (int i = 0; i < 10002; i++) {
-		c[1][i] = 1;
-	}
+	std::fill(c[1], c[1] + sizeof(&c[1]), 1);
 	int j = 0;
 	for (int i = 0; i < 10; i++) {
 		scan(n);
