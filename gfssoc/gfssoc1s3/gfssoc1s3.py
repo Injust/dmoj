@@ -9,7 +9,7 @@ def bfs(start):
         yy, xx, steps = queue.popleft()
         if (yy, xx) in dist:
             dist[(yy, xx)] = steps
-        for yy, xx in [(yy + 1, xx), (yy - 1, xx), (yy, xx + 1), (yy, xx - 1)]:
+        for yy, xx in (yy + 1, xx), (yy - 1, xx), (yy, xx + 1), (yy, xx - 1):
             if 0 <= yy < y and 0 <= xx < x and (yy, xx) not in visited and grid[yy][xx] != "X":
                 visited.add((yy, xx))
                 queue.append((yy, xx, steps + 1))
@@ -41,5 +41,5 @@ for entry in list(__import__("itertools").permutations(candidates)):
     z = one[hiders[entry[0]]]
     for index in xrange(1, t):
         z += two[entry[index - 1]][hiders[entry[index]]]
-    minimum = min(minimum, z)
-print(minimum)
+    out = min(out, z)
+print(out)
