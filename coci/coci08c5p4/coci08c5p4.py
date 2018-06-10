@@ -6,19 +6,19 @@ state = 1
 lookup = {}
 c = h
 while c:
-    temp = state
-    state = 0
-    for orig in xrange(n):
-        if temp & 1 << orig:
-            for dest in friends[orig]:
-                state ^= 1 << dest
-                total += 1
-        elif c < h:
-            total += len(friends[orig]) << 1
-    c -= 1
-    if state in lookup:
-        total += c / (lookup[state][0] - c) * (total - lookup[state][1])
-        c %= lookup[state][0] - c
-    else:
-        lookup[state] = c, total
+	temp = state
+	state = 0
+	for orig in xrange(n):
+		if temp & 1 << orig:
+			for dest in friends[orig]:
+				state ^= 1 << dest
+				total += 1
+		elif c < h:
+			total += len(friends[orig]) << 1
+	c -= 1
+	if state in lookup:
+		total += c / (lookup[state][0] - c) * (total - lookup[state][1])
+		c %= lookup[state][0] - c
+	else:
+		lookup[state] = c, total
 print(total)
