@@ -1,0 +1,1 @@
+print((lambda n: (0, 9, 18)[n] if n < 3 else (999999998 if n > 11 else ("10" + (n - 4) * "9" if n & 1 else "19" + (n - 5) * "9") + "8"))(int(__import__("sys").stdin.read())))
