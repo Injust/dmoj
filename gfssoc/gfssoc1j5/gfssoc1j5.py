@@ -1,6 +1,7 @@
 input = __import__("sys").stdin.readline
 n, m, t = map(int, input().split())
-table, hallways = [[0] * n for _ in xrange(n)], [[] for _ in range(n)]
+table = [[0] * n for _ in xrange(n)]
+hallways = __import__("collections").defaultdict(list)
 for _ in xrange(m):
 	a, b = map(int, input().split())
 	hallways[a - 1].append(b - 1)
