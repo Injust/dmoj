@@ -1,1 +1,1 @@
-print((lambda n: 1 if n == 1 else (pow(2, n - 2, 1000000013) + pow(2, (n >> 1) - 1, 1000000013) * (-1 if 2 < n % 8 < 6 else n % 8 not in {2, 6})) % 1000000013)(int(__import__("sys").stdin.read())))
+print((lambda n: n == 1 and 1 or (pow(2, n - 2, 1000000013) + pow(2, (n >> 1) - 1, 1000000013) * (2 < n % 8 < 6 and -1 or n % 8 not in {2, 6})) % 1000000013)(int(__import__("sys").stdin.read())))
