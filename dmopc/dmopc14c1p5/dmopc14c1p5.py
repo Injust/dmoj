@@ -21,4 +21,4 @@ while queue:
 		if 0 <= yy < ybound and 0 <= xx < xbound and (yy, xx) not in visited and grid[yy][xx] != "X":
 			visited.add((yy, xx))
 			queue.append((yy, xx, steps + 1))
-print(0 if teleporter > mainoffice or not ~teleporter else mainoffice - teleporter)
+print(~teleporter and teleporter <= mainoffice and mainoffice - teleporter or 0)
