@@ -15,7 +15,7 @@ def recurse(this):
 input = __import__("sys").stdin.readline
 n = int(input())
 argue = [0] * n
-group = [[] for _ in xrange(n)]
+group = __import__("collections").defaultdict(list)
 party = [False] * n
 for _ in xrange(5):
 	line = map(int, input().split())

@@ -1,6 +1,6 @@
 input = __import__("sys").stdin.readline
 n, h = map(int, input().split())
-friends = [(lambda a: tuple(i for i in xrange(n) if a[i] == "1"))(input()) for _ in xrange(n)]
+friends = [(lambda a: filter(lambda i: a[i] == "1", xrange(n)))(input()) for _ in xrange(n)]
 total = 0
 state = 1
 lookup = {}

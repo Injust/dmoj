@@ -1,6 +1,7 @@
 input = __import__("sys").stdin.readline
 n = int(input())
-paths, buy = [[-1] * n for _ in xrange(n)], {}
+paths = [[-1] * n for _ in xrange(n)]
+buy = {}
 for _ in xrange(int(input())):
 	x, y, c = map(int, input().split())
 	paths[x - 1][y - 1] = paths[y - 1][x - 1] = c

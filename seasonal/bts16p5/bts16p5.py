@@ -1,5 +1,5 @@
 def dfs(tree, num, weight):
-	if out[tree] == [0, 0]:
+	if out[tree] is None:
 		out[tree] = [num, weight]
 		for dest, add in paths[tree]:
 			out[tree] = map(sum, zip(out[tree], dfs(dest, cherries[dest], add)))
@@ -16,7 +16,7 @@ paths = __import__("collections").defaultdict(list)
 for _ in xrange(n - 1):
 	x, y, z = map(int, input().split())
 	paths[x - 1].append((y - 1, z))
-out = [[0, 0] for _ in xrange(n)]
+out = [None] * n
 good = 0
 dfs(0, 0, 0)
 print(good)

@@ -1,7 +1,7 @@
 from heapq import *
 data = __import__("sys").stdin.read().split("\n")
 v = int(data[0])
-paths = [[] for _ in xrange(v)]
+paths = __import__("collections").defaultdict(list)
 cost = [(6000000, 6000000)] * v
 for _ in xrange(int(data[1])):
 	m, n, d, s = map(int, data[_ + 2].split())

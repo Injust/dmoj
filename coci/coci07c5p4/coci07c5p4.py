@@ -1,6 +1,6 @@
 input = __import__("sys").stdin.readline
 n = int(input())
-cols = [[] for _ in xrange(n)]
+cols = __import__("collections").defaultdict(list)
 rowFreq = [[0] * n for _ in xrange(3)]
 grid = [map(int, input().split()) for y in xrange(3)]
 for y, row in enumerate(grid):

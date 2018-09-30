@@ -3,7 +3,7 @@ def blocked(factors):
 
 
 a, b, l = map(int, __import__("sys").stdin.read().split())
-factors = [[] for _ in xrange(a + b + 1)]
+factors = __import__("collections").defaultdict(list)
 for i in xrange(1, a + b + 1):
 	x = i
 	for f in xrange(2, int(i ** 0.5) + 1):
