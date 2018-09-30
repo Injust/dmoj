@@ -36,7 +36,7 @@ one = bfs(start)
 two = [[0] * t for _ in xrange(t)]
 for _ in xrange(t):
 	two[_] = bfs(hiders[_])
-candidates = list(xrange(t))
+candidates = range(t)
 for entry in list(__import__("itertools").permutations(candidates)):
 	z = one[hiders[entry[0]]]
 	for index in xrange(1, t):

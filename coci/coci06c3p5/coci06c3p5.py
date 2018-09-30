@@ -2,7 +2,7 @@ def dfs(start, paths, visited):
 	if start not in dp:
 		dp[start] = paths
 		for dest in roads[start]:
-			dp[start] += 1 if dest == 1 else (0 if dest in visited else dfs(dest, paths, visited | {dest}))
+			dp[start] += dest == 1 or dest in visited and 0 or dfs(dest, paths, visited | {dest})
 	return dp[start]
 
 
