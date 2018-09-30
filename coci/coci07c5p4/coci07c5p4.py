@@ -7,7 +7,7 @@ for y, row in enumerate(grid):
 	for x, val in enumerate(row):
 		cols[val - 1].append(x)
 		rowFreq[y][val - 1] += 1
-queue = [x for x in xrange(n) if not (rowFreq[1][x] and rowFreq[2][x])]
+queue = filter(lambda x: not (rowFreq[1][x] and rowFreq[2][x]), xrange(n))
 deleted = [False] * n
 out = 0
 while queue:

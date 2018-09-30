@@ -19,4 +19,4 @@ for _ in xrange(int(input())):
 			for xxx, yyy in (xx + 1, yy), (xx - 1, yy), (xx, yy + 1), (xx, yy - 1):
 				if 0 <= xxx < x and 0 <= yyy < y and grid[yyy][xxx] != "X":
 					queue.append([xxx, yyy, le + 1])
-	print(length if length < 60 else "#notworth")
+	print(length < 60 and length or "#notworth")

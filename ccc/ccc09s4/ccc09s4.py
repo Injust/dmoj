@@ -15,7 +15,7 @@ while queue:
 	already, at = __import__("heapq").heappop(queue)
 	if already > out:
 		break
-	out = min(buy[at] + already, out) if at in buy else out
+	out = at in buy and min(buy[at] + already, out) or out
 	for dest, add in enumerate(paths[at]):
 		if ~add and (not ~cost[dest] or already + add < cost[dest]):
 			cost[dest] = already + add

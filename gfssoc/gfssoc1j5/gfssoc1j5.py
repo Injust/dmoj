@@ -15,4 +15,4 @@ for a in xrange(n):
 				visited.add(new)
 				queue.append((new, paths + 1))
 for _ in xrange(int(input())):
-	print((lambda d: t * table[d[0] - 1][d[1] - 1] if table[d[0] - 1][d[1] - 1] else "Not enough hallways!")(map(int, input().split())))
+	print((lambda d: table[d[0] - 1][d[1] - 1] and t * table[d[0] - 1][d[1] - 1] or "Not enough hallways!")(map(int, input().split())))
