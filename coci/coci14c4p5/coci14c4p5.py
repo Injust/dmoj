@@ -28,4 +28,4 @@ for _ in xrange(5):
 		group[r].append(l)
 for i in xrange(n):
 	recurse(i)
-print("".join("AB"[bool(party[i])] for i in xrange(n)))
+print("".join("AB"[party[i] > 0] for i in xrange(n)))

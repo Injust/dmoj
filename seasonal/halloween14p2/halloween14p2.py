@@ -1,11 +1,10 @@
-input = __import__("sys").stdin.readline
-n, w = map(int, input().split())
+n, w = map(int, __import__("sys").stdin.readline().split())
 cute = [0] * (n + 1)
 fat = [0] * (n + 1)
 high = [0] * (n + 1)
 ind = 0
-for _ in xrange(n):
-	q = input().split()
+for q in __import__("sys").stdin.read().strip().split("\n"):
+	q = q.split()
 	if q[0] == "D":
 		ind -= 1
 	else:

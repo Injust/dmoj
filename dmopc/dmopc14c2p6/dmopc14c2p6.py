@@ -27,5 +27,5 @@ out = [0] * int(input())
 for pos, line in sorted(enumerate(map(int, input().split()) for _ in xrange(len(out))), key=lambda _: -_[1][2]):
 	while trees and trees[-1][1] >= line[2]:
 		bit.add(*trees.pop())
-	out[pos] = str(bit.sum(line[0] + 1, line[1] + 1))
+	out[pos] = `bit.sum(line[0] + 1, line[1] + 1)`
 print("\n".join(out))

@@ -1,4 +1,6 @@
-d, cell = map(int, __import__("sys").stdin.readline().split()), map(int, __import__("sys").stdin.readline().strip())
-while d[1]:
-	cell, d[1] = [cell[(i + (1 << d[1].bit_length() - 1)) % d[0]] ^ cell[(i - (1 << d[1].bit_length() - 1)) % d[0]] for i in xrange(d[0])], d[1] - (1 << d[1].bit_length() - 1)
+le, gen = map(int, __import__("sys").stdin.readline().split())
+cell = map(int, __import__("sys").stdin.read().strip())
+while gen:
+	cell = [cell[(i + (1 << gen.bit_length() - 1)) % le] ^ cell[(i - (1 << gen.bit_length() - 1)) % le] for i in xrange(le)]
+	gen -= (1 << gen.bit_length() - 1)
 print("".join(map(str, cell)))

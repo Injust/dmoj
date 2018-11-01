@@ -33,16 +33,15 @@ class BIT3D:
 		return self.query(x2, y2, z2) - self.query(x2, y2, z1 - 1) - self.query(x1 - 1, y2, z2) + self.query(x1 - 1, y2, z1 - 1) - self.query(x2, y1 - 1, z2) + self.query(x2, y1 - 1, z1 - 1) + self.query(x1 - 1, y1 - 1, z2) - self.query(x1 - 1, y1 - 1, z1 - 1)
 
 
-input = __import__("sys").stdin.readline
-n = int(input())
+n = int(__import__("sys").stdin.readline())
 bit = BIT3D(n, n, n)
 out = 0
-for _ in xrange(int(input())):
-	q = input().split()
+for q in __import__("sys").stdin.read().split("\n")[1:-1]:
+	q = q.split()
 	if q[0] == "C":
 		x, y, z, l = map(int, q[1:])
 		bit.add(x, y, z, l - bit.sum(x, y, z, x, y, z))
 	elif q[0] == "S":
-		x1, y1, z1, x2, y2, z2 = map(int, q[1:])
-		out += bit.sum(x1, y1, z1, x2, y2, z2)
+		q = map(int, q[1:])
+		out += bit.sum(*q)
 print(out)

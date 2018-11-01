@@ -15,9 +15,8 @@ for ind, val in enumerate(yexpand):
 	ycompress[val] = ind
 state = [0] * len(yexpand)
 out = 0
-for x in xrange(len(lines)):
-	for y in xrange(len(yexpand) - 1):
-		out += (state[y] >= t) * (yexpand[y + 1] - yexpand[y]) * (lines[x][0] - lines[x - 1][0])
-	for y in xrange(ycompress[lines[x][1]], ycompress[lines[x][2]]):
-		state[y] += lines[x][3]
+for i in xrange(len(lines)):
+	out += sum((state[y] >= t) * (yexpand[y + 1] - yexpand[y]) * (lines[i][0] - lines[i - 1][0]) for y in xrange(len(yexpand) - 1))
+	for y in xrange(ycompress[lines[i][1]], ycompress[lines[i][2]]):
+		state[y] += lines[i][3]
 print(out)
