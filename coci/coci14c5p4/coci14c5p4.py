@@ -18,16 +18,4 @@ n = int(n)
 for ind in xrange(1, len(arr)):
 	if arr[ind] & 1 == arr[ind - 1] & 1:
 		break
-if arr[ind] == 9:
-	print(decrease(arr[:]))
-elif arr[ind]:
-	low = decrease(arr[:])
-	high = increase(arr[:])
-	if n - low < high - n:
-		print(low)
-	elif high - n < n - low:
-		print(high)
-	else:
-		print low, high
-else:
-	print(increase(arr[:]))
+print((lambda high: arr[ind] > 8 and decrease(arr[:]) or arr[ind] and (lambda low: ((str(low) + " " + str(high), high)[high - n < n - low], low)[n - low < high - n])(decrease(arr[:])) or high)(increase(arr[:])))
