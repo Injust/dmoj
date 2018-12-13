@@ -30,5 +30,5 @@ for pos, query in sorted(enumerate(map(int, input().split()) for _ in xrange(q))
 			bit.add(peaks.pop() + 1, -1)
 		peaks.append(done)
 		bit.add(done + 1, 1)
-	out[pos] = str(bit.query(query[1]))
+	out[pos] = `bit.query(query[1])`
 print("\n".join(out))
