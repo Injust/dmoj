@@ -3,7 +3,7 @@ def bfs(start):
 	dist = {}
 	for dest in hiders:
 		dist[dest] = 0
-	visited = set([start])
+	visited = {start}
 	queue = __import__("collections").deque([(yy, xx, 0)])
 	while queue:
 		yy, xx, steps = queue.popleft()
