@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.Reader;
 
 class BIT2D {
 	private int[][] data;
@@ -34,26 +35,85 @@ class BIT2D {
 	}
 }
 
+class FastReader extends BufferedReader {
+	FastReader(Reader in) {
+		super(in);
+	}
+
+	char nextChar() throws Exception {
+		int c;
+		while ((c = read()) < 33);
+		return (char) c;
+	}
+
+	double nextDouble() throws Exception {
+		int c;
+		double div = 1;
+		double ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		if (c == 46) {
+			while ((c = read()) > 47 && c < 58) {
+				ret += (c - 48) / (div *= 10);
+			}
+		}
+		return neg ? -ret : ret;
+	}
+
+	int nextInt() throws Exception {
+		int c;
+		int ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		return neg ? -ret : ret;
+	}
+
+	long nextLong() throws Exception {
+		int c;
+		long ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		return neg ? -ret : ret;
+	}
+}
+
 public class ioi01p1 {
 	public static void main(String[] args) throws Exception {
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		String[] tokens = in.readLine().split(" ");
-		int s = Integer.parseInt(tokens[1]);
+		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in.nextInt();
+		int s = in.nextInt();
 		BIT2D bit = new BIT2D(s, s);
 		int i;
 		do {
-			tokens = in.readLine().split(" ");
-			i = Integer.parseInt(tokens[0]);
+			i = in.nextInt();
 			if (i == 1) {
-				int x = Integer.parseInt(tokens[1]);
-				int y = Integer.parseInt(tokens[2]);
-				int a = Integer.parseInt(tokens[3]);
+				int x = in.nextInt();
+				int y = in.nextInt();
+				int a = in.nextInt();
 				bit.add(x + 1, y + 1, a);
 			} else if (i == 2) {
-				int l = Integer.parseInt(tokens[1]);
-				int b = Integer.parseInt(tokens[2]);
-				int r = Integer.parseInt(tokens[3]);
-				int t = Integer.parseInt(tokens[4]);
+				int l = in.nextInt();
+				int b = in.nextInt();
+				int r = in.nextInt();
+				int t = in.nextInt();
 				System.out.println(bit.sum(l + 1, b + 1, r + 1, t + 1));
 			}
 		} while (i < 3);

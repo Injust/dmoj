@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.Reader;
 
 class BIT3D {
 	private long[][][] data;
@@ -39,28 +40,88 @@ class BIT3D {
 	}
 }
 
+class FastReader extends BufferedReader {
+	FastReader(Reader in) {
+		super(in);
+	}
+
+	char nextChar() throws Exception {
+		int c;
+		while ((c = read()) < 33);
+		return (char) c;
+	}
+
+	double nextDouble() throws Exception {
+		int c;
+		double div = 1;
+		double ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		if (c == 46) {
+			while ((c = read()) > 47 && c < 58) {
+				ret += (c - 48) / (div *= 10);
+			}
+		}
+		return neg ? -ret : ret;
+	}
+
+	int nextInt() throws Exception {
+		int c;
+		int ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		return neg ? -ret : ret;
+	}
+
+	long nextLong() throws Exception {
+		int c;
+		long ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		return neg ? -ret : ret;
+	}
+}
+
 public class gfssoc1s4 {
 	public static void main(String[] args) throws Exception {
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		int n = Integer.parseInt(in.readLine());
-		int q = Integer.parseInt(in.readLine());
+		FastReader in = new FastReader(new InputStreamReader(System.in));
+		int n = in.nextInt();
+		int q = in.nextInt();
 		BIT3D bit = new BIT3D(n, n, n);
 		long out = 0;
 		for (int i = 0; i < q; i++) {
-			String[] tokens = in.readLine().split(" ");
-			if (tokens[0].equals("C")) {
-				int x = Integer.parseInt(tokens[1]);
-				int y = Integer.parseInt(tokens[2]);
-				int z = Integer.parseInt(tokens[3]);
-				int l = Integer.parseInt(tokens[4]);
+			char c = in.nextChar();
+			if (c == 67) {
+				int x = in.nextInt();
+				int y = in.nextInt();
+				int z = in.nextInt();
+				int l = in.nextInt();
 				bit.add(x, y, z, l - (int) bit.sum(x, y, z, x, y, z));
-			} else if (tokens[0].equals("S")) {
-				int x1 = Integer.parseInt(tokens[1]);
-				int y1 = Integer.parseInt(tokens[2]);
-				int z1 = Integer.parseInt(tokens[3]);
-				int x2 = Integer.parseInt(tokens[4]);
-				int y2 = Integer.parseInt(tokens[5]);
-				int z2 = Integer.parseInt(tokens[6]);
+			} else if (c == 83) {
+				int x1 = in.nextInt();
+				int y1 = in.nextInt();
+				int z1 = in.nextInt();
+				int x2 = in.nextInt();
+				int y2 = in.nextInt();
+				int z2 = in.nextInt();
 				out += bit.sum(x1, y1, z1, x2, y2, z2);
 			}
 		}

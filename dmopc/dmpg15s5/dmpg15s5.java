@@ -1,23 +1,82 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.BitSet;
+
+class FastReader extends BufferedReader {
+	FastReader(Reader in) {
+		super(in);
+	}
+
+	char nextChar() throws Exception {
+		int c;
+		while ((c = read()) < 33);
+		return (char) c;
+	}
+
+	double nextDouble() throws Exception {
+		int c;
+		double div = 1;
+		double ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		if (c == 46) {
+			while ((c = read()) > 47 && c < 58) {
+				ret += (c - 48) / (div *= 10);
+			}
+		}
+		return neg ? -ret : ret;
+	}
+
+	int nextInt() throws Exception {
+		int c;
+		int ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		return neg ? -ret : ret;
+	}
+
+	long nextLong() throws Exception {
+		int c;
+		long ret = 0;
+		while ((c = read()) < 33);
+		boolean neg = c == 45;
+		if (neg) {
+			c = read();
+		}
+		do {
+			ret = ret * 10 + c - 48;
+		} while ((c = read()) > 47 && c < 58);
+		return neg ? -ret : ret;
+	}
+}
 
 public class dmpg15s5 {
 	public static void main(String[] args) throws Exception {
-		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		String[] tokens = in.readLine().split(" ");
-		int n = Integer.parseInt(tokens[0]);
-		int m = Integer.parseInt(tokens[1]);
+		FastReader in = new FastReader(new InputStreamReader(System.in));
+		int n = in.nextInt();
+		int m = in.nextInt();
 		BitSet[] grid = new BitSet[n + 1];
 		for (int i = 0; i <= n; i++) {
 			grid[i] = new BitSet(n + 1);
 		}
 		for (int i = 0; i < m; i++) {
-			tokens = in.readLine().split(" ");
-			int x = Integer.parseInt(tokens[0]);
-			int y = Integer.parseInt(tokens[1]);
-			int w = Integer.parseInt(tokens[2]);
-			int h = Integer.parseInt(tokens[3]);
+			int x = in.nextInt();
+			int y = in.nextInt();
+			int w = in.nextInt();
+			int h = in.nextInt();
 			grid[y].flip(x);
 			grid[y].flip(x + w);
 			grid[y + h].flip(x);
