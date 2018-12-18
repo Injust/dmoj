@@ -1,4 +1,4 @@
-class BIT:
+class BIT1D:
 	def __init__(self, maxind):
 		self.data = [0] * (maxind + 1)
 		self.maxind = maxind
@@ -20,7 +20,7 @@ class BIT:
 
 
 arr = dict(map(reversed, enumerate(map(int, __import__("sys").stdin.read().split()[1:]), start=1)))
-state = BIT(len(arr))
+state = BIT1D(len(arr))
 for i in xrange(len(arr)):
 	state.add(i + 1, 1)
 for i in xrange(len(arr) >> 1):

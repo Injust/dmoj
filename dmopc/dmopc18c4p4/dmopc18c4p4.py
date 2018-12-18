@@ -1,4 +1,4 @@
-class BIT:
+class BIT1D:
 	def __init__(self, maxind):
 		self.data = [0] * (maxind + 1)
 		self.maxind = maxind
@@ -22,7 +22,7 @@ class BIT:
 input = __import__("sys").stdin.readline
 n, q = map(int, input().split())
 arr = map(int, input().split())
-bit = BIT(n)
+bit = BIT1D(n)
 loc = __import__("collections").defaultdict(list)
 for i in xrange(n):
 	loc[arr[i]].append(i)

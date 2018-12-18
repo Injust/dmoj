@@ -6,13 +6,13 @@ char _;
 const int MAXN = 1000000;
 typedef std::pair<long long, int> pli;
 
-struct BIT {
+struct BIT1D {
 	int maxind = MAXN;
 	int data[MAXN + 1] = {0};
 
-	void add(int ind) {
+	void add(int ind, int delta) {
 		for (; ind <= maxind; ind += -ind & ind) {
-			data[ind]++;
+			data[ind] += delta;
 		}
 	}
 
@@ -22,6 +22,10 @@ struct BIT {
 			ret += data[ind];
 		}
 		return ret;
+	}
+
+	int sum(int low, int high) {
+		return query(high) - query(low - 1);
 	}
 };
 
@@ -39,11 +43,11 @@ int main() {
 		psa[i].first += psa[i - 1].first - p;
 	}
 	sort(psa, psa + n + 1);
-	BIT bit;
+	BIT1D bit;
 	long long out = 0;
 	for (int i = 0; i <= n; i++) {
 		out += bit.query(psa[i].second + 1);
-		bit.add(psa[i].second + 1);
+		bit.add(psa[i].second + 1, 1);
 	}
 	printf("%lld\n", out);
 	return 0;

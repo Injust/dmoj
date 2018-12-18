@@ -5,18 +5,18 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.StringTokenizer;
 
-class BIT {
+class BIT1D {
 	private int[] data;
 	private int maxind;
 
-	BIT(int maxind) {
+	BIT1D(int maxind) {
 		data = new int[maxind + 1];
 		this.maxind = maxind;
 	}
 
-	void add(int ind) {
+	void add(int ind, int delta) {
 		for (; ind <= maxind; ind += -ind & ind) {
-			data[ind]++;
+			data[ind] += delta;
 		}
 	}
 
@@ -26,6 +26,10 @@ class BIT {
 			ret += data[ind];
 		}
 		return ret;
+	}
+
+	int sum(int low, int high) {
+		return query(high) - query(low - 1);
 	}
 }
 
@@ -102,11 +106,11 @@ public class coci15c2p5 {
 			psa[i][1] = i;
 		}
 		Arrays.sort(psa, Comparator.<long[]>comparingLong(a -> a[0]).thenComparingLong(a -> a[1]));
-		BIT bit = new BIT(n + 1);
+		BIT1D bit = new BIT1D(n + 1);
 		long out = 0;
 		for (long[] pair : psa) {
 			out += bit.query((int) pair[1] + 1);
-			bit.add((int) pair[1] + 1);
+			bit.add((int) pair[1] + 1, 1);
 		}
 		System.out.println(out);
 	}

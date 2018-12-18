@@ -1,4 +1,4 @@
-class BIT:
+class BIT1D:
 	def __init__(self, maxind):
 		self.data = [0] * (maxind + 1)
 		self.maxind = maxind
@@ -21,7 +21,7 @@ class BIT:
 
 input = __import__("sys").stdin.readline
 n = int(input())
-bit = BIT(n)
+bit = BIT1D(n)
 trees = sorted(enumerate(map(int, input().split()), start=1), key=lambda _: _[1])
 out = [0] * int(input())
 for pos, line in sorted(enumerate(map(int, input().split()) for _ in xrange(len(out))), key=lambda _: -_[1][2]):

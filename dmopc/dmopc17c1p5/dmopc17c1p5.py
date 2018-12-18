@@ -1,4 +1,4 @@
-class BIT:
+class BIT1D:
 	def __init__(self, maxind):
 		self.data = [0] * (maxind + 1)
 		self.maxind = maxind
@@ -15,10 +15,13 @@ class BIT:
 			ind -= -ind & ind
 		return ret
 
+	def sum(self, low, high):
+		return self.query(high) - self.query(low - 1)
+
 
 input = __import__("sys").stdin.readline
 n, q = map(int, input().split())
-bit = BIT(n)
+bit = BIT1D(n)
 peaks = []
 done = n
 out = [None] * q
