@@ -85,7 +85,7 @@ public class utso18p6 {
 				int j = c;
 				while ((j | b) > b) {
 					out += val[j | b];
-					j = (j - 1) & c;
+					j = j - 1 & c;
 				}
 				System.out.println(out);
 			}

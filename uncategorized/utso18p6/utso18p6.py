@@ -13,5 +13,5 @@ for _ in xrange(q):
 		i = c
 		while i | b > b:
 			out += val[i | b]
-			i = (i - 1) & c
+			i = i - 1 & c
 		print(out)

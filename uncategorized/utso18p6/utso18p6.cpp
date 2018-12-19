@@ -25,7 +25,7 @@ int main() {
 			int j = c;
 			while ((j | b) > b) {
 				out += val[j | b];
-				j = (j - 1) & c;
+				j = j - 1 & c;
 			}
 			printf("%ld\n", out);
 		}
