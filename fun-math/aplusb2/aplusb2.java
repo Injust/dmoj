@@ -77,10 +77,10 @@ public class aplusb2 {
 			int carry2 = 0;
 			String s = st.nextToken();
 			String l = st.nextToken();
-			if (sneg = s.charAt(0) == '-') {
+			if (sneg = s.charAt(0) < 46) {
 				s = s.substring(1);
 			}
-			if (lneg = l.charAt(0) == '-') {
+			if (lneg = l.charAt(0) < 46) {
 				l = l.substring(1);
 			}
 			char[] rep = new char[Math.max(l.length() - s.length(), 0)];
@@ -95,32 +95,32 @@ public class aplusb2 {
 					l = s;
 					s = temp;
 				}
-				int sum = carry + s.charAt(s.length() - 1) - l.charAt(s.length() - 1) + '0';
-				int sum2 = carry2 + s.charAt(s.length() - 1) - l.charAt(s.length() - 1) + '0';
+				int sum = carry + s.charAt(s.length() - 1) - l.charAt(s.length() - 1) + 48;
+				int sum2 = carry2 + s.charAt(s.length() - 1) - l.charAt(s.length() - 1) + 48;
 				carry = 0;
-				if (sum < '0') {
+				if (sum < 48) {
 					sum += 10;
 					carry = -1;
 				}
-				if (sum2 < '0') {
+				if (sum2 < 48) {
 					sum2 += 10;
 				}
 				carry2 = carry;
 				out.insert(0, (char) sum);
-				if (sum2 == '0') {
+				if (sum2 == 48) {
 					sum2 += 10;
 					carry2--;
 				}
 				out2.insert(0, (char) sum2);
 				for (int j = s.length() - 2; j >= 0; j--) {
-					sum = carry + s.charAt(j) - l.charAt(j) + '0';
-					sum2 = carry2 + s.charAt(j) - l.charAt(j) + '0';
+					sum = carry + s.charAt(j) - l.charAt(j) + 48;
+					sum2 = carry2 + s.charAt(j) - l.charAt(j) + 48;
 					carry = 0;
-					if (sum < '0') {
+					if (sum < 48) {
 						sum += 10;
 						carry = -1;
 					}
-					if (sum2 < '0') {
+					if (sum2 < 48) {
 						sum2 += 10;
 					}
 					carry2 = carry;
@@ -129,7 +129,7 @@ public class aplusb2 {
 				}
 			} else {
 				for (int j = s.length() - 1; j >= 0; j--) {
-					int sum = carry + s.charAt(j) + l.charAt(j) - '0';
+					int sum = carry + s.charAt(j) + l.charAt(j) - 48;
 					carry = 0;
 					if (sum > 57) {
 						sum -= 10;

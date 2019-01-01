@@ -67,32 +67,32 @@ public class cco15p4 {
 	private static int gx, gy;
 
 	private static void dfs(int x, int y) {
-		if (grid[y][x] == 'N') {
-			for (int yy = y - 1; yy >= 0; yy--) {
-				if (grid[yy][x] != '.') {
-					dfs(x, yy);
-				}
-			}
-		} else if (grid[y][x] == 'S') {
-			for (int yy = y + 1; yy < gy; yy++) {
-				if (grid[yy][x] != '.') {
-					dfs(x, yy);
-				}
-			}
-		} else if (grid[y][x] == 'E') {
+		if (grid[y][x] < 70) {
 			for (int xx = x + 1; xx < gx; xx++) {
-				if (grid[y][xx] != '.') {
+				if (grid[y][xx] > 46) {
 					dfs(xx, y);
 				}
 			}
-		} else if (grid[y][x] == 'W') {
+		} else if (grid[y][x] < 79) {
+			for (int yy = y - 1; yy >= 0; yy--) {
+				if (grid[yy][x] > 46) {
+					dfs(x, yy);
+				}
+			}
+		} else if (grid[y][x] < 84) {
+			for (int yy = y + 1; yy < gy; yy++) {
+				if (grid[yy][x] > 46) {
+					dfs(x, yy);
+				}
+			}
+		} else if (grid[y][x] < 88) {
 			for (int xx = x - 1; xx >= 0; xx--) {
-				if (grid[y][xx] != '.') {
+				if (grid[y][xx] > 46) {
 					dfs(xx, y);
 				}
 			}
 		}
-		grid[y][x] = '.';
+		grid[y][x] = 46;
 		System.out.println("(" + y + "," + x + ")");
 	}
 
@@ -107,7 +107,7 @@ public class cco15p4 {
 		in.close();
 		for (int y = 0; y < gy; y++) {
 			for (int x = 0; x < gx; x++) {
-				if (grid[y][x] != '.') {
+				if (grid[y][x] > 46) {
 					dfs(x, y);
 				}
 			}
