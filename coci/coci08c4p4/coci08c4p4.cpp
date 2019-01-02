@@ -2,7 +2,7 @@
 #include <iostream>
 
 int n;
-char grid[512][512];
+char grid[512][513];
 char out[512][513];
 
 struct data {
