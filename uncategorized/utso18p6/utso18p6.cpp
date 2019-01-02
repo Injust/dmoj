@@ -2,12 +2,12 @@
 #include <iostream>
 
 char _;
-int val[262144];
 
 int main() {
 	int n, q, a, b, c;
 	scan(n);
 	scan(q);
+	int val[1 << n];
 	for (int i = 0; i < 1 << n; i++) {
 		scan(val[i]);
 	}
