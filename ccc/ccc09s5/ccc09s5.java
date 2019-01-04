@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 
 class FastReader extends BufferedReader {
@@ -63,8 +66,12 @@ class FastReader extends BufferedReader {
 }
 
 public class ccc09s5 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int gy = in.nextInt();
 		int gx = in.nextInt();
 		int[][] grid = new int[gy][gx + 1];
@@ -82,20 +89,21 @@ public class ccc09s5 {
 		}
 		in.close();
 		int high = 0;
-		int out = 0;
+		int ans = 0;
 		for (int[] y : grid) {
 			int b = 0;
 			for (int x : y) {
 				b += x;
 				if (b > high) {
-					out = 1;
+					ans = 1;
 					high = b;
 				} else if (b == high) {
-					out++;
+					ans++;
 				}
 			}
 		}
-		System.out.println(high);
-		System.out.println(out);
+		out.println(high);
+		out.println(ans);
+		out.close();
 	}
 }

@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 
 class FastReader extends BufferedReader {
@@ -63,8 +66,12 @@ class FastReader extends BufferedReader {
 }
 
 public class utso18p6 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int n = in.nextInt();
 		int q = in.nextInt();
 		int[] val = new int[1 << n];
@@ -78,18 +85,19 @@ public class utso18p6 {
 			if (a < 2) {
 				val[b] = c;
 			} else if ((b | c) > c) {
-				System.out.println(0);
+				out.println(0);
 			} else {
-				long out = val[b];
+				long ans = val[b];
 				c ^= b;
 				int j = c;
 				while ((j | b) > b) {
-					out += val[j | b];
+					ans += val[j | b];
 					j = j - 1 & c;
 				}
-				System.out.println(out);
+				out.println(ans);
 			}
 		}
 		in.close();
+		out.close();
 	}
 }

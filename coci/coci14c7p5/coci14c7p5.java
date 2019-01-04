@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 
 class FastReader extends BufferedReader {
@@ -63,8 +66,12 @@ class FastReader extends BufferedReader {
 }
 
 public class coci14c7p5 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int n = in.nextInt();
 		int k = in.nextInt();
 		int[] arr = new int[n];
@@ -92,6 +99,7 @@ public class coci14c7p5 {
 				high = mid;
 			}
 		}
-		System.out.println(low);
+		out.println(low);
+		out.close();
 	}
 }

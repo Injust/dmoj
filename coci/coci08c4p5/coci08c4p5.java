@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -65,6 +68,8 @@ class FastReader extends BufferedReader {
 }
 
 public class coci08c4p5 {
+	private static FastReader in;
+	private static PrintWriter out;
 	private static int l;
 
 	private static int blocked(ArrayList<Integer> factors) {
@@ -88,11 +93,12 @@ public class coci08c4p5 {
 	}
 
 	private static int gcd(int a, int b) {
-		return (b > 0 ? gcd(b, a % b) : a);
+		return b > 0 ? gcd(b, a % b) : a;
 	}
 
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int a = in.nextInt();
 		int b = in.nextInt();
 		l = in.nextInt();
@@ -113,9 +119,9 @@ public class coci08c4p5 {
 				factors[i].add(x);
 			}
 		}
-		long[] out = new long[3];
-		for (int i = 0; i <= a + b >> 1; i++) {
-			int mul = i << 1 < a + b ? 2 : 1;
+		long[] ans = new long[3];
+		for (int i = 0; i <= (a + b) / 2; i++) {
+			int mul = i * 2 < a + b ? 2 : 1;
 			int notA = i > 0 ? blocked(factors[i]) : l - 1;
 			int notB = blocked(factors[a + b - i]);
 			HashSet<Integer> temp = new HashSet<>();
@@ -125,12 +131,13 @@ public class coci08c4p5 {
 				}
 			}
 			int notAB = i > 0 ? blocked(new ArrayList<>(temp)) : notB;
-			out[0] += mul * notAB;
-			out[1] += mul * (notA + notB - (notAB << 1));
-			out[2] += mul * (l - notA - notB + notAB);
+			ans[0] += mul * notAB;
+			ans[1] += mul * (notA + notB - notAB * 2);
+			ans[2] += mul * (l - notA - notB + notAB);
 		}
-		for (long i : out) {
-			System.out.println(i);
+		for (long i : ans) {
+			out.println(i);
 		}
+		out.close();
 	}
 }

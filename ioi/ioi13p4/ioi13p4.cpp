@@ -8,7 +8,7 @@ void exploreCave(int N) {
 		int result = tryCombination(s);
 		bool req = result <= door && ~result;
 		while (left != right) {
-			int mid = left + right >> 1;
+			int mid = (left + right) / 2;
 			for (int j = left; j <= mid; j++) {
 				s[j] ^= !l[j];
 			}

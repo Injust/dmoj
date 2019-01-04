@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 
 class BIT3D {
@@ -101,12 +104,16 @@ class FastReader extends BufferedReader {
 }
 
 public class gfssoc1s4 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int n = in.nextInt();
 		int q = in.nextInt();
 		BIT3D bit = new BIT3D(n, n, n);
-		long out = 0;
+		long ans = 0;
 		for (int i = 0; i < q; i++) {
 			char c = in.nextChar();
 			if (c == 67) {
@@ -122,10 +129,11 @@ public class gfssoc1s4 {
 				int x2 = in.nextInt();
 				int y2 = in.nextInt();
 				int z2 = in.nextInt();
-				out += bit.sum(x1, y1, z1, x2, y2, z2);
+				ans += bit.sum(x1, y1, z1, x2, y2, z2);
 			}
 		}
 		in.close();
-		System.out.println(out);
+		out.println(ans);
+		out.close();
 	}
 }

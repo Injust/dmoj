@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -66,8 +69,12 @@ class FastReader extends BufferedReader {
 }
 
 public class coci07c5p4 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int n = in.nextInt();
 		int[][] grid = new int[3][n];
 		ArrayList<Integer>[] cols = new ArrayList[n];
@@ -90,7 +97,7 @@ public class coci07c5p4 {
 			}
 		}
 		BitSet deleted = new BitSet(n);
-		int out = 0;
+		int ans = 0;
 		while (!queue.isEmpty()) {
 			int target = queue.pop();
 			for (int x : cols[target]) {
@@ -101,10 +108,11 @@ public class coci07c5p4 {
 						}
 					}
 					deleted.set(x);
-					out++;
+					ans++;
 				}
 			}
 		}
-		System.out.println(out);
+		out.println(ans);
+		out.close();
 	}
 }

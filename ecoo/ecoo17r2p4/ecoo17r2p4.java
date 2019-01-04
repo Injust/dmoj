@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.Arrays;
 
@@ -64,8 +67,12 @@ class FastReader extends BufferedReader {
 }
 
 public class ecoo17r2p4 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int j = 0;
 		int[] o = new int[10001];
 		int[][] c = new int[2][10002];
@@ -79,8 +86,9 @@ public class ecoo17r2p4 {
 				}
 				o[j] = c[j & 1][1];
 			}
-			System.out.println(o[n]);
+			out.println(o[n]);
 		}
 		in.close();
+		out.close();
 	}
 }

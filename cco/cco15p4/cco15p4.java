@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 
 class FastReader extends BufferedReader {
@@ -63,6 +66,8 @@ class FastReader extends BufferedReader {
 }
 
 public class cco15p4 {
+	private static FastReader in;
+	private static PrintWriter out;
 	private static char[][] grid;
 	private static int gx, gy;
 
@@ -93,11 +98,12 @@ public class cco15p4 {
 			}
 		}
 		grid[y][x] = 46;
-		System.out.println("(" + y + "," + x + ")");
+		out.println("(" + y + "," + x + ")");
 	}
 
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		gy = in.nextInt();
 		gx = in.nextInt();
 		grid = new char[gy][gx];
@@ -112,5 +118,6 @@ public class cco15p4 {
 				}
 			}
 		}
+		out.close();
 	}
 }

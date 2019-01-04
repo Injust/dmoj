@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
@@ -65,13 +68,17 @@ class FastReader extends BufferedReader {
 }
 
 public class aplusb2 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int a = in.nextInt();
 		for (int i = 0; i < a; i++) {
 			StringTokenizer st = new StringTokenizer(in.readLine());
-			StringBuilder out = new StringBuilder();
-			StringBuilder out2 = new StringBuilder();
+			StringBuilder ans = new StringBuilder();
+			StringBuilder ans2 = new StringBuilder();
 			boolean lneg, sneg;
 			int carry = 0;
 			int carry2 = 0;
@@ -106,12 +113,12 @@ public class aplusb2 {
 					sum2 += 10;
 				}
 				carry2 = carry;
-				out.insert(0, (char) sum);
+				ans.insert(0, (char) sum);
 				if (sum2 == 48) {
 					sum2 += 10;
 					carry2--;
 				}
-				out2.insert(0, (char) sum2);
+				ans2.insert(0, (char) sum2);
 				for (int j = s.length() - 2; j >= 0; j--) {
 					sum = carry + s.charAt(j) - l.charAt(j) + 48;
 					sum2 = carry2 + s.charAt(j) - l.charAt(j) + 48;
@@ -124,8 +131,8 @@ public class aplusb2 {
 						sum2 += 10;
 					}
 					carry2 = carry;
-					out.insert(0, (char) sum);
-					out2.insert(0, (char) sum2);
+					ans.insert(0, (char) sum);
+					ans2.insert(0, (char) sum2);
 				}
 			} else {
 				for (int j = s.length() - 1; j >= 0; j--) {
@@ -135,39 +142,40 @@ public class aplusb2 {
 						sum -= 10;
 						carry = 1;
 					}
-					out.insert(0, (char) sum);
+					ans.insert(0, (char) sum);
 				}
 				if (carry > 0) {
-					out.insert(0, "1");
+					ans.insert(0, "1");
 				}
 			}
-			String outS = out.toString();
-			String out2S = out2.toString();
+			String ansS = ans.toString();
+			String ans2S = ans2.toString();
 			if (carry < 0) {
-				out2S = out2S.replaceAll("^9+", "");
-				if (out2S.equals(":")) {
-					System.out.println("0");
+				ans2S = ans2S.replaceAll("^9+", "");
+				if (ans2S.equals(":")) {
+					out.println("0");
 				} else {
-					if (out2S.length() == 0) {
-						out2S = "9";
+					if (ans2S.length() == 0) {
+						ans2S = "9";
 					}
-					System.out.print('-');
-					for (int z = 0; z < out2S.length() - 1; z++) {
-						System.out.print((char) (105 - out2S.charAt(z)));
+					out.print('-');
+					for (int z = 0; z < ans2S.length() - 1; z++) {
+						out.print((char) (105 - ans2S.charAt(z)));
 					}
-					System.out.println((char) (106 - out2S.charAt(out2S.length() - 1)));
+					out.println((char) (106 - ans2S.charAt(ans2S.length() - 1)));
 				}
 			} else {
 				if (sneg && lneg) {
-					System.out.print("-");
+					out.print("-");
 				}
-				outS = outS.replaceAll("^0+", "");
-				if (outS.length() == 0) {
-					outS = "0";
+				ansS = ansS.replaceAll("^0+", "");
+				if (ansS.length() == 0) {
+					ansS = "0";
 				}
-				System.out.println(outS);
+				out.println(ansS);
 			}
 		}
 		in.close();
+		out.close();
 	}
 }

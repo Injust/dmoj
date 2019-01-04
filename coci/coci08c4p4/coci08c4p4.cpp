@@ -17,7 +17,7 @@ data recurse(int x1, int x2, int y1, int y2) {
 		ret.all1 = grid[y1][x1] == '0';
 		ret.rec = 0;
 	} else {
-		int size = x2 - x1 >> 1;
+		int size = (x2 - x1) / 2;
 		int xmid = x1 + size;
 		int ymid = y1 + size;
 		data squares[] = {recurse(x1, xmid, y1, ymid), recurse(xmid, x2, y1, ymid), recurse(x1, xmid, ymid, y2), recurse(xmid, x2, ymid, y2)};
@@ -38,8 +38,8 @@ data recurse(int x1, int x2, int y1, int y2) {
 		}
 		for (int dy = 0; dy < size; dy++) {
 			for (int dx = 0; dx < size; dx++) {
-				out[y1 + size * (best[0] >> 1) + dy][x1 + size * (best[0] & 1) + dx] = '0';
-				out[y1 + size * (best[1] >> 1) + dy][x1 + size * (best[1] & 1) + dx] = '1';
+				out[y1 + best[0] / 2 * size + dy][x1 + size * (best[0] & 1) + dx] = '0';
+				out[y1 + best[1] / 2 * size + dy][x1 + size * (best[1] & 1) + dx] = '1';
 			}
 		}
 	}

@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.BitSet;
 
@@ -64,8 +67,12 @@ class FastReader extends BufferedReader {
 }
 
 public class dmpg15s5 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int n = in.nextInt();
 		int m = in.nextInt();
 		BitSet[] grid = new BitSet[n + 1];
@@ -91,10 +98,11 @@ public class dmpg15s5 {
 		for (int y = 1; y <= n; y++) {
 			grid[y].xor(grid[y - 1]);
 		}
-		int out = 0;
+		int ans = 0;
 		for (BitSet y : grid) {
-			out += y.cardinality();
+			ans += y.cardinality();
 		}
-		System.out.println(out);
+		out.println(ans);
+		out.close();
 	}
 }

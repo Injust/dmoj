@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 
 class BIT2D {
@@ -96,8 +99,12 @@ class FastReader extends BufferedReader {
 }
 
 public class ioi01p1 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		in.nextInt();
 		int s = in.nextInt();
 		BIT2D bit = new BIT2D(s, s);
@@ -114,9 +121,10 @@ public class ioi01p1 {
 				int b = in.nextInt();
 				int r = in.nextInt();
 				int t = in.nextInt();
-				System.out.println(bit.sum(l + 1, b + 1, r + 1, t + 1));
+				out.println(bit.sum(l + 1, b + 1, r + 1, t + 1));
 			}
 		} while (i < 3);
 		in.close();
+		out.close();
 	}
 }

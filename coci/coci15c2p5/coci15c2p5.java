@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -94,8 +97,12 @@ class FastReader extends BufferedReader {
 }
 
 public class coci15c2p5 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int n = in.nextInt();
 		StringTokenizer st = new StringTokenizer(in.readLine());
 		int p = in.nextInt();
@@ -107,11 +114,12 @@ public class coci15c2p5 {
 		}
 		Arrays.sort(psa, Comparator.<long[]>comparingLong(a -> a[0]).thenComparingLong(a -> a[1]));
 		BIT1D bit = new BIT1D(n + 1);
-		long out = 0;
+		long ans = 0;
 		for (long[] pair : psa) {
-			out += bit.query((int) pair[1] + 1);
+			ans += bit.query((int) pair[1] + 1);
 			bit.add((int) pair[1] + 1, 1);
 		}
-		System.out.println(out);
+		out.println(ans);
+		out.close();
 	}
 }

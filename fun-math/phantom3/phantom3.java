@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -65,8 +68,12 @@ class FastReader extends BufferedReader {
 }
 
 public class phantom3 {
+	private static FastReader in;
+	private static PrintWriter out;
+
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		long n = in.nextLong();
 		long m = in.nextLong();
 		in.close();
@@ -82,7 +89,7 @@ public class phantom3 {
 			}
 		}
 		sieve.clear();
-		int out = 0;
+		int ans = 0;
 		for (int prime : primes) {
 			int min = (int) (n / prime * prime - n);
 			if (min < 0) {
@@ -92,9 +99,10 @@ public class phantom3 {
 				sieve.set(min);
 			}
 			if (prime >= n) {
-				out++;
+				ans++;
 			}
 		}
-		System.out.println(out + m - n - sieve.cardinality());
+		out.println(ans + m - n - sieve.cardinality());
+		out.close();
 	}
 }

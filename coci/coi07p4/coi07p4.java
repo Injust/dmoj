@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 
 class FastReader extends BufferedReader {
@@ -63,6 +66,8 @@ class FastReader extends BufferedReader {
 }
 
 public class coi07p4 {
+	private static FastReader in;
+	private static PrintWriter out;
 	private static final int[][] df = new int[][]{{0, 0, 0, 0}, {0, 0, 0, 0}, {1, 0, 0, 0}, {0, 1, 0, 0}, {2, 0, 0, 0}, {0, 0, 1, 0}, {1, 1, 0, 0}, {0, 0, 0, 1}, {3, 0, 0, 0}, {0, 2, 0, 0}};
 	private static long a, b;
 	private static int[] factors;
@@ -121,12 +126,14 @@ public class coi07p4 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		a = in.nextLong();
 		b = in.nextLong();
 		in.close();
 		factors = new int[4];
 		memo = new int[18][30][19][13][11];
-		System.out.println(dprod(1, 0));
+		out.println(dprod(1, 0));
+		out.close();
 	}
 }

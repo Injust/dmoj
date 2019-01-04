@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -65,6 +68,8 @@ class FastReader extends BufferedReader {
 }
 
 public class coci14c4p5 {
+	private static FastReader in;
+	private static PrintWriter out;
 	private static int[] argue;
 	private static ArrayList<Integer>[] group;
 	private static BitSet party;
@@ -88,7 +93,8 @@ public class coci14c4p5 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int n = in.nextInt();
 		argue = new int[n];
 		group = new ArrayList[n];
@@ -112,7 +118,8 @@ public class coci14c4p5 {
 			recurse(i);
 		}
 		for (int i = 0; i < n; i++) {
-			System.out.print(party.get(i) ? 'A' : 'B');
+			out.print(party.get(i) ? 'A' : 'B');
 		}
+		out.close();
 	}
 }

@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.BitSet;
 
@@ -64,16 +67,18 @@ class FastReader extends BufferedReader {
 }
 
 public class coci14c1p4 {
+	private static FastReader in;
+	private static PrintWriter out;
 	private static int[] accuse;
 	private static int[] accusations;
 	private static BitSet visited;
-	private static int out;
+	private static int ans;
 
 	private static void dfs(int accuser, boolean mobster) {
 		if (!visited.get(accuser)) {
 			visited.flip(accuser);
 			if (mobster) {
-				out++;
+				ans++;
 			}
 			accusations[accuse[accuser]]--;
 			if (mobster || accusations[accuse[accuser]] == 0) {
@@ -83,7 +88,8 @@ public class coci14c1p4 {
 	}
 
 	public static void main(String[] args) throws Exception {
-		FastReader in = new FastReader(new InputStreamReader(System.in));
+		in = new FastReader(new InputStreamReader(System.in));
+		out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
 		int n = in.nextInt();
 		accuse = new int[n];
 		accusations = new int[n];
@@ -102,6 +108,7 @@ public class coci14c1p4 {
 		for (int accuser = 0; accuser < n; accuser++) {
 			dfs(accuser, false);
 		}
-		System.out.println(out);
+		out.println(ans);
+		out.close();
 	}
 }

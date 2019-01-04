@@ -1,7 +1,3 @@
-def blocked(factors):
-	return sum(l / reduce(lambda x, i: x / __import__("fractions").gcd(x, i) * i, c, 1) * (bits & 1 or -1) for bits in xrange(1, len(factors) + 1) for c in __import__("itertools").combinations(factors, bits))
-
-
 a, b, l = map(int, __import__("sys").stdin.read().split())
 factors = __import__("collections").defaultdict(list)
 for i in xrange(1, a + b + 1):
@@ -14,6 +10,7 @@ for i in xrange(1, a + b + 1):
 	if x > 1:
 		factors[i].append(x)
 out = [0, 0, 0]
+blocked = lambda factors: sum(l / reduce(lambda x, i: x / __import__("fractions").gcd(x, i) * i, c, 1) * (bits & 1 or -1) for bits in xrange(1, len(factors) + 1) for c in __import__("itertools").combinations(factors, bits))
 for i in xrange((a + b >> 1) + 1):
 	mul = (i << 1 < a + b) + 1
 	notA = blocked(factors[i]) if i else l - 1
