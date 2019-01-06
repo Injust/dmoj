@@ -15,8 +15,7 @@ class BIT1D:
 			ind -= -ind & ind
 		return ret
 
-	def sum(self, low, high):
-		return self.query(high) - self.query(low - 1)
+	sum = lambda self, low, high: self.query(high) - self.query(low - 1)
 
 
 arr = dict(map(reversed, enumerate(map(int, __import__("sys").stdin.read().split()[1:]), start=1)))

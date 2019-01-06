@@ -29,8 +29,7 @@ class BIT3D:
 			z -= -z & z
 		return ret
 
-	def sum(self, x1, y1, z1, x2, y2, z2):
-		return self.query(x2, y2, z2) - self.query(x2, y2, z1 - 1) - self.query(x1 - 1, y2, z2) + self.query(x1 - 1, y2, z1 - 1) - self.query(x2, y1 - 1, z2) + self.query(x2, y1 - 1, z1 - 1) + self.query(x1 - 1, y1 - 1, z2) - self.query(x1 - 1, y1 - 1, z1 - 1)
+	sum = lambda self, x1, y1, z1, x2, y2, z2: self.query(x2, y2, z2) - self.query(x2, y2, z1 - 1) - self.query(x1 - 1, y2, z2) + self.query(x1 - 1, y2, z1 - 1) - self.query(x2, y1 - 1, z2) + self.query(x2, y1 - 1, z1 - 1) + self.query(x1 - 1, y1 - 1, z2) - self.query(x1 - 1, y1 - 1, z1 - 1)
 
 
 n = int(__import__("sys").stdin.readline())

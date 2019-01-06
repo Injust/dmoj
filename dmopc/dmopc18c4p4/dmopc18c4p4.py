@@ -15,8 +15,7 @@ class BIT1D:
 			ind -= -ind & ind
 		return ret
 
-	def sum(self, low, high):
-		return self.query(high) - self.query(low - 1)
+	sum = lambda self, low, high: self.query(high) - self.query(low - 1)
 
 
 input = __import__("sys").stdin.readline

@@ -1,8 +1,7 @@
 def drain(x, y):
 	filled[y][x] = False
 	for dx, dy in (1, 0), (0, 1), (-1, 0), (0, -1):
-		if 0 <= x + dx < gx and 0 <= y + dy < gy and filled[y + dy][x + dx]:
-			drain(x + dx, y + dy)
+		0 <= x + dx < gx and 0 <= y + dy < gy and filled[y + dy][x + dx] and drain(x + dx, y + dy)
 
 
 input = __import__("sys").stdin.readline

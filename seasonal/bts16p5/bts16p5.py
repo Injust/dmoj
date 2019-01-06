@@ -4,7 +4,7 @@ def dfs(tree, num, weight):
 		for dest, add in paths[tree]:
 			out[tree] = map(sum, zip(out[tree], dfs(dest, cherries[dest], add)))
 		global good
-		good += bool(out[tree][0] >= c and out[tree][1] <= k and tree)
+		good += out[tree][0] >= c and out[tree][1] <= k and tree and 1
 	return out[tree]
 
 

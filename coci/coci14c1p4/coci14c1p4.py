@@ -4,8 +4,7 @@ def dfs(accuser, mobster):
 		global out
 		out += mobster
 		accusations[accuse[accuser]] -= 1
-		if mobster or not accusations[accuse[accuser]]:
-			dfs(accuse[accuser], not mobster)
+		(mobster or not accusations[accuse[accuser]]) and dfs(accuse[accuser], not mobster)
 
 
 input = __import__("sys").stdin.readline

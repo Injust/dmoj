@@ -16,10 +16,6 @@ def calcVisits(at):
 	visits[at] = max(visits[at], 1)
 
 
-def calcTreeCost(at):
-	return sum(visits[dest] * add + calcTreeCost(dest) for dest, add in children[at])
-
-
 def calcRootDist(at=0):
 	for dest, add in children[at]:
 		rootDist[dest] = rootDist[at] + add
@@ -54,6 +50,7 @@ trees = []
 visits = [0] * n
 for child in children[0]:
 	findRoots(*child)
+calcTreeCost = lambda at: sum(visits[dest] * add + calcTreeCost(dest) for dest, add in children[at])
 for tree in trees:
 	tree[1] = calcTreeCost(tree[0])
 rootDist = [0] * n

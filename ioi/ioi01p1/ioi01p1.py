@@ -22,8 +22,7 @@ class BIT2D:
 			y -= -y & y
 		return ret
 
-	def sum(self, x1, y1, x2, y2):
-		return self.query(x2, y2) + self.query(x1 - 1, y1 - 1) - self.query(x2, y1 - 1) - self.query(x1 - 1, y2)
+	sum = lambda self, x1, y1, x2, y2: self.query(x2, y2) + self.query(x1 - 1, y1 - 1) - self.query(x2, y1 - 1) - self.query(x1 - 1, y2)
 
 
 input = __import__("sys").stdin.readline

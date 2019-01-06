@@ -5,7 +5,7 @@ def recurse(x1, x2, y1, y2):
 	size = x2 - x1 >> 1
 	xmid = x1 + size
 	ymid = y1 + size
-	squares = (recurse(x1, xmid, y1, ymid), recurse(xmid, x2, y1, ymid), recurse(x1, xmid, ymid, y2), recurse(xmid, x2, ymid, y2))
+	squares = recurse(x1, xmid, y1, ymid), recurse(xmid, x2, y1, ymid), recurse(x1, xmid, ymid, y2), recurse(xmid, x2, ymid, y2)
 	all0 = sum(square[0] for square in squares)
 	all1 = sum(square[1] for square in squares)
 	cost = 262144
