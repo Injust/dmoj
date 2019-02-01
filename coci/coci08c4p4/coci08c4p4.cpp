@@ -13,8 +13,8 @@ data recurse(int x1, int x2, int y1, int y2) {
 	data ret = {0, 0, 262144};
 	if (x2 - x1 == 1) {
 		out[y1][x1] = grid[y1][x1];
-		ret.all0 = grid[y1][x1] == '1';
-		ret.all1 = grid[y1][x1] == '0';
+		ret.all0 = grid[y1][x1] > 48;
+		ret.all1 = grid[y1][x1] < 49;
 		ret.rec = 0;
 	} else {
 		int size = (x2 - x1) / 2;
