@@ -83,21 +83,21 @@ public class coci07c5p4 {
 			}
 		}
 		in.close();
-		ArrayDeque<Integer> queue = new ArrayDeque<>();
+		ArrayList<Integer> queue = new ArrayList<>();
 		for (int x = 0; x < n; x++) {
 			if (rowFreq[1][x] == 0 || rowFreq[2][x] == 0) {
-				queue.push(x);
+				queue.add(x);
 			}
 		}
 		BitSet deleted = new BitSet(n);
 		int ans = 0;
 		while (!queue.isEmpty()) {
-			int target = queue.pop();
+			int target = queue.remove(queue.size() - 1);
 			for (int x : cols[target]) {
 				if (!deleted.get(x)) {
 					for (int y = 0; y < 3; y++) {
 						if (--rowFreq[y][grid[y][x]] == 0) {
-							queue.push(grid[y][x]);
+							queue.add(grid[y][x]);
 						}
 					}
 					deleted.set(x);
