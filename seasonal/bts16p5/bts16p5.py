@@ -1,10 +1,9 @@
 def dfs(tree, num, weight):
 	if out[tree] is None:
 		out[tree] = [num, weight]
-		for dest, add in paths[tree]:
-			out[tree] = map(sum, zip(out[tree], dfs(dest, cherries[dest], add)))
+		map(lambda i: out.__setitem__(tree, map(sum, zip(out[tree], dfs(i[0], cherries[i[0]], i[1])))), paths[tree])
 		global good
-		good += out[tree][0] >= c and out[tree][1] <= k and tree and 1
+		good += out[tree][0] >= c and out[tree][1] <= k and bool(tree)
 	return out[tree]
 
 
