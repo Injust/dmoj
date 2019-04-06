@@ -16,14 +16,10 @@ for _ in xrange(5):
 	for h in xrange(maxh):
 		filled = [[x <= h for x in grid[y]] for y in xrange(gy)]
 		for y in xrange(gy):
-			if filled[y][0]:
-				drain(0, y)
-			if filled[y][-1]:
-				drain(gx - 1, y)
+			filled[y][0] and drain(0, y)
+			filled[y][-1] and drain(gx - 1, y)
 		for x in xrange(1, gx - 1):
-			if filled[0][x]:
-				drain(x, 0)
-			if filled[-1][x]:
-				drain(x, gy - 1)
+			filled[0][x] and drain(x, 0)
+			filled[-1][x] and drain(x, gy - 1)
 		out += sum(sum(filled[y]) for y in xrange(gy))
 	print(out)
